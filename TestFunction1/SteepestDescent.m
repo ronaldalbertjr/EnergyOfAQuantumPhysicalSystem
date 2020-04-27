@@ -1,7 +1,9 @@
-function S=SteepestDescent(func,x0, y0, H, X)
+function [S, xValues, yValues, zValues]=SteepestDescent(func,x0, y0, H, X)
 
 x = x0;
 y = y0;
+
+count = 1; 
 
 dx = 0.00001;
 dy = 0.00001;
@@ -23,5 +25,9 @@ while norm(g) > l
     x = x - alpha*gx;
     y = y - alpha*gy;
     
+    xValues(count) = x;
+    yValues(count) = y;
+    zValues(count) = func(x, y, H, X);
+    count = count + 1;
 end
 S = [x, y];
