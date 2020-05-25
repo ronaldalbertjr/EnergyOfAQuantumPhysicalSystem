@@ -9,7 +9,7 @@ w = 6;
 Vo = -5;
 
 %Setting up the function
-func = @(x) Vo./(exp(s*(abs(x) - w/2)) + 1) + x.^2/50;  
+func = @(x) Vo./(exp(s*(abs(x-1) - w/2)) + 1) + x.^2/50;  
 %func = @(x) (x.^2).*2;
 
 %Setting up the matrix for aproximating the value of the second derivative
@@ -36,7 +36,7 @@ V=V(:,ind);
 
 %Plot
 figure(1)
-plot(X, abs(V(:,1))/sqrt(h),'k');
+plot(X, func(X));
 
 lowestEigenValue = E(1,1);
 HA = H;
